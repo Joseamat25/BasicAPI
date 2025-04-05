@@ -28,5 +28,8 @@ RUN poetry install --no-root
 # Copiar el resto de archivos del proyecto
 COPY . .
 
-# Comando por defecto (ajústalo a tu script o app principal)
-CMD ["python", "BasicAPI/main.py"]
+# Exponer el puerto 8000 para la aplicación
+EXPOSE 8000
+
+# Comando para ejecutar la aplicación
+CMD ["poetry", "run", "uvicorn", "BasicAPI.main:app", "--host", "0.0.0.0", "--port", "8000"]
