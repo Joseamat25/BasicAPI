@@ -20,7 +20,7 @@ RUN curl -sSL https://install.python-poetry.org | python3 - && \
 WORKDIR /app
 
 # Copiar archivos de dependencias primero (para aprovechar cache)
-COPY pyproject.toml poetry.lock* ./
+COPY BasicAPI/pyproject.toml BasicAPI/poetry.lock* ./
 
 # Instalar dependencias (sin crear entorno virtual)
 RUN poetry install --no-root
@@ -29,4 +29,4 @@ RUN poetry install --no-root
 COPY . .
 
 # Comando por defecto (ajústalo a tu script o app principal)
-CMD ["python", "main.py"]
+CMD ["python", "BasicAPI/main.py"]
